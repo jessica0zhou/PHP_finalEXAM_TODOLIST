@@ -14,7 +14,7 @@ class Friend_model extends CI_Model{
 		$user_id = $this->session->userdata('user_id');
 
 		if($slug === FALSE){
-			$sql = "select  a.id as id, sid as uid, name, email, status from apply a LEFT JOIN users u on a.sid = u.id group by sid";
+			$sql = "select  a.id as id, sid as uid, name, email, status from apply a LEFT JOIN users u on a.sid = u.id where a.uid='$user_id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 		}
@@ -33,7 +33,7 @@ class Friend_model extends CI_Model{
 	}
 
 	public function delete_list($id){
-		$this->db->where('sid', $id);
+		$this->db->where('id', $id);
 		$this->db->delete('apply');
 		return true;
 	}

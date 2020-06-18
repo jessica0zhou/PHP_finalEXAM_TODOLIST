@@ -91,7 +91,8 @@
             datatype: "json",
             success: function (res) {
                 console.log(res.code);
-                $('#t'+id).add();
+                window.location.href = "/friend";
+                // $('#t'+ids).add();
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert("系统异常");
